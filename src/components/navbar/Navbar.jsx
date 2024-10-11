@@ -2,7 +2,7 @@
 import Link from "next/link";
   const Navbar = () => {
   return (
-    <div>
+    <div className="container gap[20px] grid gap-x-6 fixed gap-y-2 grid-cols-3 justify-between text-center px-4 py-8 bg-blue-200">
         <Link href={'/hom'}>hom</Link>        
         <Link href={'/contack'}>contack</Link>
         <Link href={'/about'}>about</Link>
