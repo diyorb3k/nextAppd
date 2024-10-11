@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const Hom = () => {
   const [news, setNews] = useState([]);
-console.log(news);
+  console.log(news);
   const url = `https://api.gdeltproject.org/api/v2/doc/doc?query=America&mode=artlist&format=json`;
 
   useEffect(() => {
@@ -21,23 +21,30 @@ console.log(news);
   }, []);
 
   return (
-    <div>
-      {news.map((article, index) => (
-        <div key={index}>
-          <p>{article.title}</p>
-          
-          {/* Show thumbnail image */}
-          {article.socialimage && (
-            <a href={article.url} target="_blank" rel="noopener noreferrer">
-              <img 
-                src={article.socialimage} 
-                alt={article.title} 
-                style={{ width: '100%', maxWidth: '560px', height: '315px' }} 
-              />
-            </a>
-          )}
-        </div>
-      ))}
+    <div className="container mx-auto px-4 py-8 bg-blue-200">
+      <h1 className="text-2xl font-bold mb-6 text-center">Latest News</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {news.map((article, index) => (
+          <div key={index} className="bg-white shadow-lg rounded-lg overflow-hidden">
+            {article.socialimage && (
+              <a href={article.url} target="_blank" rel="noopener noreferrer">
+                <img 
+                  src={article.socialimage} 
+                  alt={article.title} 
+                  className="w-full h-48 object-cover"
+                />
+              </a>
+            )}
+            <div className="p-4">
+              <h2 className="font-semibold text-lg mb-2">{article.title}</h2>
+              <p className="text-sm text-gray-600">{article.seendate}</p>
+              <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
+                Read more
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
