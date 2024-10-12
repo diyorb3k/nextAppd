@@ -38,9 +38,11 @@ const Hom = () => {
             <div className="p-4">
               <h2 className="font-semibold text-lg mb-2">{article.title}</h2>
               <p className="text-sm text-gray-600">{article.seendate}</p>
+
               <a href={article.url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">
                 Read more
               </a>
+             
             </div>
           </div>
         ))}
